@@ -14,23 +14,6 @@ social_links:
   - name: Email
     url: mailto:Sanjay.Vonk@outlook.com
 
-# Sidebar
-sidebar:
-  - title: Contact
-    items:
-      - text: Email: Sanjay.Vonk@outlook.com
-      - text: GitHub: your-username
-        url: https://github.com/your-username
-      - text: LinkedIn: your-username
-        url: https://www.linkedin.com/in/your-username
-  - title: Links
-    items:
-      - text: CV
-        url: /assets/CV.pdf
-      - text: Transcript
-        url: /assets/transcript.pdf
-
-
 # title: Sanjay Vonk
 # logo: /assets/img/headshot.jpeg
 # #description: Contact: Sanjay.Vonk@outlook.com
