@@ -1,13 +1,5 @@
 title: Sanjay Vonk
 logo: /assets/img/headshot.jpeg
-#description: text below image
+description: Contact: Sanjay.Vonk@outlook.com
 #show_downloads: true
 theme: jekyll-theme-minimal
-
-
-navbar-links:
-  About Me: "aboutme"
-  Resources:
-    - Beautiful Jekyll: "https://beautifuljekyll.com"
-    - Learn markdown: "https://www.markdowntutorial.com/"
-  Author's home: "https://deanattali.com"
