@@ -3,17 +3,7 @@ description: "3rd year Double bachelors student in Econometrics and Economics at
 logo: /assets/img/headshot.jpeg
 theme: jekyll-theme-minimal
 
-# Social Links
-social_links:
-  - name: GitHub
-    url: https://github.com/your-username
-  - name: LinkedIn
-    url: https://www.linkedin.com/in/your-username
-  - name: Twitter
-    url: https://twitter.com/your-username
-  - name: Email
-    url: mailto:Sanjay.Vonk@outlook.com
-
+use_text_title: True
 # title: Sanjay Vonk
 # logo: /assets/img/headshot.jpeg
 # #description: Contact: Sanjay.Vonk@outlook.com
