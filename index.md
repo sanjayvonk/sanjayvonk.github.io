@@ -3,7 +3,6 @@ layout: default
 ---
 
 I'm a 3rd year double bachelors student in Econometrics and Economics at the Erasmus School of Economics. Currently Interning in Quantitative Research at Velador Associates under supervision of dr. Stuart Jamieson.
-I'm a 3rd year Double bachelors student in Econometrics and Economics at the Erasmus School of Economics. Currently interning in Quantitative Research at Velador Associates under supervision of dr. Stuart Jamieson.
 
 ## On-Going Projects
 
