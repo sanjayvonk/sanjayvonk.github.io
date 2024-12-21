@@ -1,6 +1,5 @@
 ---
 layout: default
-title: Meee!
+title: -
 rank: 1
 ---
-Haha
