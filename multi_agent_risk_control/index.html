@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="Distribution-free risk control for multi-agent decision systems with multiple safety objectives.">
+  <meta name="keywords" content="distribution-free, risk control, online learning, multi-agent systems, robotics, safety">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Distribution-Free Risk Control for Multi-Agent Decision Systems</title>
+
+  <!-- Fonts (same as Nerfies / CDT page template) -->
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+  <!-- Styles (Nerfies template) -->
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.svg">
+
+  <!-- Math (formatted mathematics) -->
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['\\(','\\)'], ['$', '$']],
+        displayMath: [['\\[','\\]'], ['$$','$$']]
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+
+  <style>
+    /* Small tweaks to match the CDT project-page feel */
+    .publication-title { letter-spacing: 0.2px; }
+    .section { padding-top: 2rem; padding-bottom: 2rem; }
+    .content p { font-size: 1.03rem; line-height: 1.65; }
+    .note { background: #fafafa; border: 1px solid #e6e6e6; border-radius: 14px; padding: 1rem 1.1rem; }
+    .tight { margin-top: .65rem; }
+    .table thead th { font-weight: 700; }
+    .iframe-wrap { border: 1px solid #e6e6e6; border-radius: 14px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.06); }
+    .iframe-wrap iframe { width: 100%; height: 1100px; border: 0; display: block; background: #fff; overflow: hidden; }
+    @media (max-width: 900px) { .iframe-wrap iframe { height: 820px; } }
+  </style>
+
+  <!-- Scripts (Nerfies template; safe to keep even if unused) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+
+<body>
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">Distribution-Free Risk Control for Multi-Agent Decision Systems</h1>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="mailto:s.vonk@ese.eur.nl">Sanjay Vonk</a>
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">Erasmus University Rotterdam · Department of Econometrics</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <span class="link-block">
+                <a href="./static/paper/MultiAgentRiskControl.pdf"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon"><i class="fas fa-file-pdf"></i></span>
+                  <span>Paper (PDF)</span>
+                </a>
+              </span>
+
+              <span class="link-block">
+                <a href="./demo.html"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon"><i class="fas fa-play"></i></span>
+                  <span>Demo (full page)</span>
+                </a>
+              </span>
+</div>
+          </div>
+</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="abstract">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3">Abstract</h2>
+    <div class="content">
+      <p>
+        Autonomous systems often couple learned predictions with planning, while safety is judged on realized outcomes under shift and rare failures.
+        We study distribution-free risk control for online multi-agent decision-making with multiple safety objectives.
+        At each time step the system selects actions from a time-varying family of decision rules indexed by a scalar conservatism parameter.
+        Our target is the <i>worst-channel retrospective metric</i>: the time-average of the per-time maximum loss across all agents and objectives.
+        We prove that independent per-channel calibration does not control this metric.
+        We then propose a selective system-level controller that updates a single parameter using the realized worst-channel loss,
+        but applies it only to channels that were recently maximal, leaving others unaffected.
+        Under a mild delayed-safety condition, we obtain a finite-time worst-channel bound without distributional assumptions.
+        We instantiate the theory in a drone–pedestrian navigation simulation with inertia, short-horizon prediction, and spline planning.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="demo">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3">Visual demonstration</h2>
+    <div class="content">
+      <p>
+        Three controllers run side-by-side on the <i>same</i> pedestrians and the <i>same</i> inertial drone dynamics.
+        Each drone repeatedly crosses the arena to collect goals, while respecting two safety objectives:
+        separation from pedestrians and separation from other drones.
+        Collisions are marked by red × and trigger a respawn (pedestrians are unaffected).
+      </p>
+
+      <div class="iframe-wrap">
+        <iframe id="demoFrame" title="Three-way risk-control demo" src="./demo.html" loading="lazy" scrolling="no"></iframe>
+      </div>
+
+      <p class="is-size-6 has-text-grey">
+        <b>Colors:</b> blue = no risk control, purple = global shared parameter, orange = proposed selective worst-channel control.
+        The plot below the arena shows closest separation over time, with red × at collision timesteps.
+      </p>
+    </div>
+  </div>
+</section>
+
+
+<section class="section" id="setup">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3">Problem setup</h2>
+    <div class="content">
+      <p>
+        We consider an online decision system over discrete times \(t = 1,2,\dots,T\).
+        At time \(t\) the system observes an input \(x_t\in\mathcal{X}\), chooses an action \(u_t\in\mathcal{U}\),
+        and then an outcome \(y_t\in\mathcal{Y}\) is realized.
+        The only standing requirement is bounded loss:
+        \[
+          \mathcal{L}(u_t, y_t) \in [0,1],
+        \]
+        and we make <i>no</i> stochastic assumptions on the sequence \((x_t,y_t)\): it may be nonstationary, non-exchangeable, or even adversarial.
+      </p>
+
+      <p>
+        The system does not pick arbitrary actions.
+        Instead, at each time \(t\) it has a family of decision rules indexed by a single scalar parameter:
+        \[
+          \mathcal{D}_t := \{ D_t^{\lambda} : \mathcal{X} \to \mathcal{U} \mid \lambda \in \mathbb{R} \}.
+        \]
+        You can think of \(\lambda\) as a continuously-tunable knob that moves the planner
+        from aggressive (high throughput) to cautious (large safety margins).
+      </p>
+
+      <p>
+        Multi-agent systems bring multiple <i>channels</i> of safety loss.
+        Index channels by \(c\in\mathcal{C}\) (for example, “drone 7 vs pedestrians” or “drone 3 vs drone 4”).
+        Let \(\ell_t^c\in[0,1]\) be the loss on channel \(c\) at time \(t\).
+        The worst-channel loss and the metric we control are:
+        \[
+          m_t := \max_{c\in\mathcal{C}} \ell_t^c,
+          \qquad
+          \widehat{R}^{\max}_T := \frac{1}{T}\sum_{t=1}^T m_t.
+        \]
+        This captures the realized frequency/severity of the most critical safety events across the entire system.
+      </p>
+    </div>
+  </div>
+</section>
+
+
+<section class="section" id="method">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3">Selective worst-channel control</h2>
+    <div class="content">
+      <p>
+        A naive global strategy is to share one parameter across all channels and update it using the worst loss \(m_t\).
+        This yields a clean guarantee, but it can induce an undesirable coupling:
+        a single near-miss in one corner can slow everyone down.
+      </p>
+
+      <p>
+        Our controller preserves the system-level guarantee while localizing the behavioral effect.
+        We maintain a global parameter \(\lambda^G_t\) and per-channel local parameters \(\{\lambda^c_t\}_{c\in\mathcal{C}}\).
+        At each time \(t\), we choose an <i>active set</i> \(\mathcal{A}_t\subseteq\mathcal{C}\) using only past information (e.g., recent maximizers, a predictive critical set, top-\(k\) channels).
+        The planner uses the <i>effective</i> parameter
+        \[
+          \lambda^{\mathrm{eff},c}_t :=
+          \begin{cases}
+            \lambda^G_t, & c \in \mathcal{A}_t,\\
+            \lambda^c_t, & c \notin \mathcal{A}_t.
+          \end{cases}
+        \]
+        Then we update the global parameter by one-dimensional feedback on the realized worst-channel loss:
+        \[
+          \lambda^G_{t+1} = \lambda^G_t + \eta\bigl(\varepsilon - m_t\bigr),
+        \]
+        where \(\varepsilon\in[0,1]\) is the target risk level and \(\eta>0\) is a step size.
+      </p>
+
+      <div class="note">
+        <p class="tight">
+          <b>Interpretation.</b>
+          The update controls a system-level quantity (so it is not diluted by the number of agents),
+          while the active set makes the planner feel this conservatism only where it matters.
+          In the demo, this is why the global controller can look “overly cautious,” while the selective controller stays fast
+          except at the specific moments/channels that repeatedly dominate worst-case risk.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section" id="guarantee">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3">Distribution-free guarantee</h2>
+    <div class="content">
+      <p>
+        The analysis is planner-agnostic: the decision rules \(D_t^{\lambda}\) may be nonconvex, heuristic,
+        and may incorporate prediction, coupling between agents, and an arbitrary measurable active-set policy.
+        The only substantive modeling requirement is a mild <i>delayed safety</i> condition (natural for inertial systems),
+        which says that sufficiently conservative parameters yield low average worst-channel loss after at most \(K\) steps.
+      </p>
+
+      <p>
+        Under delayed safety and bounded losses \(m_t\in[0,1]\), the global feedback update yields a finite-time bound:
+        \[
+          \widehat{R}^{\max}_t
+          \le \varepsilon
+          + \frac{\lambda^G_1 - \lambda_{\mathrm{safe}}}{\eta\,t}
+          + \frac{K}{t},
+          \qquad t\ge K.
+        \]
+        In particular, \(\limsup_{t\to\infty} \widehat{R}^{\max}_t \le \varepsilon\).
+        This is fully distribution-free: no IID, no exchangeability, no probabilistic model of errors.
+      </p>
+    </div>
+  </div>
+</section>
+
+
+<section class="section" id="application">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3">Application: multi-drone navigation among pedestrians</h2>
+    <div class="content">
+      <p>
+        The demo instantiates the abstract objects above in a setting designed to be visually interpretable:
+        drones have inertia, make short-horizon plans under imperfect constant-velocity prediction,
+        and face two simultaneous safety objectives.
+      </p>
+
+      <p>
+        <b>Inertial dynamics.</b>
+        Each drone has position \(p_t\in\mathbb{R}^2\) and velocity \(v_t\in\mathbb{R}^2\).
+        The planner chooses a desired velocity \(v_t^{\mathrm{des}}\), tracked with a first-order response:
+        \[
+          a_t = \mathrm{clip}\left(\frac{v_t^{\mathrm{des}}-v_t}{\tau},\,a_{\max}\right),\quad
+          v_{t+1} = \mathrm{clip}(v_t + \Delta t\,a_t,\,v_{\max}),\quad
+          p_{t+1}=p_t+\Delta t\,v_{t+1}.
+        \]
+      </p>
+
+      <p>
+        <b>Channels and bounded losses.</b>
+        For drone \(i\), let \(d_{t,\min}^{(i,\mathrm{ped})}\) be its distance to the nearest pedestrian and
+        \(d_{t,\min}^{(i,\mathrm{dd})}\) the distance to the nearest other drone.
+        Using separation targets \(d_{\mathrm{ped}}\) and \(d_{\mathrm{dd}}\), we use normalized margin violations:
+        \[
+          \ell_t^{(i,\mathrm{ped})} = \min\Bigl\{1,\,\max\bigl\{0,\tfrac{d_{\mathrm{ped}} - d_{t,\min}^{(i,\mathrm{ped})}}{d_{\mathrm{ped}}}\bigr\}\Bigr\},\quad
+          \ell_t^{(i,\mathrm{dd})} = \min\Bigl\{1,\,\max\bigl\{0,\tfrac{d_{\mathrm{dd}} - d_{t,\min}^{(i,\mathrm{dd})}}{d_{\mathrm{dd}}}\bigr\}\Bigr\}.
+        \]
+      </p>
+
+      <h3 class="title is-5">What to look for in the demo</h3>
+      <ul>
+        <li><b>No risk control (blue):</b> stays aggressive and often collides, losing progress and reward.</li>
+        <li><b>Global shared parameter (purple):</b> suppresses collisions by slowing everyone down, even when only one channel is risky.</li>
+        <li><b>Selective worst-channel control (orange):</b> matches the blue controller most of the time, then becomes conservative only when a specific channel becomes critical—preserving throughput.</li>
+      </ul>
+
+      <h3 class="title is-5">Representative outcomes (from the paper)</h3>
+      <p>
+        In a longer-horizon setting (arena \(55\times 55\) m, \(N=10\) drones, \(M=46\) pedestrians, horizon \(H=20\) steps),
+        the same qualitative story appears quantitatively:
+      </p>
+
+      <table class="table is-striped is-fullwidth">
+        <thead>
+          <tr><th>Controller</th><th>Reward (↑)</th><th>Collisions (↓)</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Independent calibration</td><td>23</td><td>23</td></tr>
+          <tr><td>Global shared parameter</td><td>13</td><td>8</td></tr>
+          <tr><td>Selective worst-channel (CSWC)</td><td>24</td><td>5</td></tr>
+        </tbody>
+      </table>
+
+      <p class="is-size-6 has-text-grey">
+        The guarantee concerns the worst-channel metric \(\widehat{R}^{\max}_T\), and the key empirical question is whether we can
+        reduce the largest safety violations without imposing a uniform slowdown. The selective controller is designed for exactly this tradeoff.
+      </p>
+    </div>
+  </div>
+</section>
+
+
+<section class="section" id="bibtex">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3">BibTeX</h2>
+    <div class="content">
+<pre><code>@article{vonk2026multirisk,
+  author  = {Vonk, Sanjay},
+  title   = {Distribution-Free Risk Control for Multi-Agent Decision Systems},
+  year    = {2026},
+  note    = {Project page with demo.},
+}</code></pre>
+</div>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <p>
+        This website is built on the <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a> project-page template.
+        Please link back if you reuse it.
+      </p>
+      <p class="is-size-7 has-text-grey">
+        No analytics are included.
+      </p>
+    </div>
+  </div>
+</footer>
+
+
+  <script>
+    // Auto-resize the embedded demo iframe to eliminate internal scrolling.
+    (function () {
+      const frame = document.getElementById('demoFrame');
+      if (!frame) return;
+      window.addEventListener('message', (event) => {
+        const d = event.data;
+        if (!d || d.type !== 'demoHeight') return;
+        const h = Math.max(300, Number(d.height) || 0);
+        frame.style.height = (h + 2) + 'px';
+      });
+    })();
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>3‑Way Risk Control Demo — No Risk vs Global vs Selective</title>
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+  <style>
+    :root{
+      --fg:#111; --muted:#666; --bg:#fff; --card:#fafafa; --border:#ddd;
+      --blue:#1f77b4; --purple:#9467bd; --orange:#ff7f0e; --red:#d62728;
+    }
+    body{ margin:0; font-family: 'Google Sans','Noto Sans', ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      background:var(--bg); color:var(--fg); overflow:hidden; }
+    .wrap{ max-width: 1320px; margin: 0 auto; padding: 14px 14px 18px; }
+    h1{ font-size:18px; margin:0 0 6px; font-weight: 750; letter-spacing:0.2px;}
+    .sub{ font-size:13px; color:var(--muted); line-height:1.35; margin-bottom: 10px;}
+    canvas{
+      width: 100%; height: auto;
+      border-radius: 14px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      border: 1px solid var(--border);
+      background:#fff;
+    }
+  </style>
+</head>
+<body>
+<div class="wrap">
+  <h1>3‑Way Comparison: No risk control vs Global risk control vs Selective worst‑channel control</h1>
+  <div class="sub">
+    Three simulations run in parallel with the <b>same pedestrians</b>. Drones have inertia and plan a short‑horizon path using
+    constant‑velocity prediction. The global controller updates a single scalar using the realized worst‑channel loss and applies it
+    to <i>all</i> channels; the proposed controller updates the same scalar but applies it only to the previous/current worst channel,
+    while other channels keep local parameters.
+  </div>
+  <canvas id="cv" width="1300" height="1300"></canvas>
+</div>
+
+<script src="demo_tmp.js"></script>
+</body>
+</html>
