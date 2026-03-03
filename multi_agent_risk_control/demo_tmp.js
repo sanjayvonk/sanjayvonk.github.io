@@ -3,7 +3,7 @@
   const canvas = document.getElementById("cv");
   const ctx = canvas.getContext("2d");
 
-  // ---------- Config (meters, seconds) ----------
+  // ---------- Config (meters, seconds) -----------
   const cfg = {
     arena: 34.0,        // m
     dtPhys: 0.05,       // physics tick (s)
