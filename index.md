@@ -4,8 +4,6 @@ layout: default
 
 I'm currently a master's student in Statistics at the University of Oxford.
 
-[CV](/docs/CVs/CV.pdf) · [Transcript](/docs/Transcripts/Transcript_19_12_2025.pdf)
-
 ## Projects
 
 ### [Brain Tumour Segmentation with Calibrated Uncertainty](/brain-tumour/)
