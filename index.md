@@ -2,9 +2,9 @@
 layout: default
 ---
 
-I'm a 4rd year Double bachelors student in Econometrics/Operations Research and Economics at the Erasmus School of Economics. Under mentorship of dr. Stuart Jamieson. and currently quantitative researcher at MyArtBroker.
+I'm currently a master's student in Statistics at the University of Oxford.
 
-## On-Going Projects
+## Projects
 
 ### [Brain Tumour Segmentation with Calibrated Uncertainty](/brain-tumour/)
 A U-Net segments glioma sub-regions on brain MRI, and conformal prediction turns its output into prediction sets that control how much tumour goes undetected. The [interactive 3D viewer](/brain-tumour/) shows where the model is uncertain, including a lesion the segmentation misses entirely but the uncertainty flags.
